@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fandom + Google Ads Demo</title>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+    crossorigin="anonymous"></script>
+
+  <!-- Google Publisher Tag -->
+  <script src="https://securepubads.g.doubleclick.net/tag/js/gpt.js?network-code=5441" async></script>
+
+  <!-- Amazon APS Tag -->
+  <script src="https://c.amazon-adsystem.com/aax2/apstag.js" defer></script>
+
+  <!-- DPlayer -->
+  <script src="https://lrfeditor1807.github.io/DPlayer.min.js"></script>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --card: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --brand: #f59e0b;
+      --accent: #3b82f6;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #030712, #111827);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      padding: 16px 20px;
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 14px;
+    }
+
+    .brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 1.6fr 0.8fr;
+      gap: 24px;
+    }
+
+    .panel {
+      background: rgba(31, 41, 55, 0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 18px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+    }
+
+    #player {
+      width: 100%;
+      min-height: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .ad-box {
+      margin-top: 20px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .sidebar .ad-box {
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .native-slot {
+      width: 100%;
+      min-height: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: rgba(59,130,246,0.08);
+      color: var(--muted);
+      border: 1px dashed rgba(255,255,255,0.15);
+    }
+
+    .label {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 8px;
+    }
+
+    .content h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.5rem, 2vw, 2.4rem);
+    }
+
+    .content p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <div class="brand">Fandom Media</div>
+      <div class="meta" id="geoInfo">Targeting: loading...</div>
+    </header>
+
+    <div class="layout">
+      <main class="panel content">
+        <div class="label">Video</div>
+        <div id="player"></div>
+
+        <div class="ad-box">
+          <ins class="adsbygoogle"
+               style="display:block; width:100%; min-height:90px;"
+               data-ad-client="ca-pub-XXXXXXXXXXXX"
+               data-ad-slot="1234567890"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        <h2>Featured Story</h2>
+        <p>
+          This is a demo layout for Fandom-style monetization with video ads, Google AdSense, and
+          ad targeting. It supports multilingual and country-based delivery for US, Chile, Argentina,
+          and Brazil, and uses English, Spanish, Portuguese, and German content configurations.
+        </p>
+      </main>
+
+      <aside class="panel sidebar">
+        <div class="label">Sponsored</div>
+
+        <div class="ad-box">
+          <div id="leaderboard-slot" class="native-slot">
+            GPT / DFP Ad Slot
+          </div>
+        </div>
+
+        <div class="ad-box">
+          <div id="amazon-slot" class="native-slot">
+            Amazon Ad Slot
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- Fandom specific ad config -->
+  <script>
+    window.fandomAds = window.fandomAds || { cmd: [] };
+    window.fandomAds.deploymentEnvironment = 'production';
+  </script>
+
+  <!-- Fandom Morpheus config -->
+  <script>
+    window.__morpheusConfig = {
+      env: "production",
+      players: {
+        jwplayer: {
+          mode: "dsr",
+          siteId: "cGlKNUnj",
+          placementId: "KmMLkvao"
+        },
+        connatix: {
+          customerId: "016551d5-7095-47c0-a46b-fd0cb9bf4c72",
+          playerId: "3c577609-921b-404b-92a4-91cd2c8794f2",
+          renderId: "5905d05804794fe6848f163ef096b3a0",
+          playerIdByGeo: {
+            CA: "b9619548-af06-4f6b-96c3-8e28e7e04de2"
+          }
+        },
+        primis: {
+          siteId: "122378",
+          playerApiId: "174d339a652c49b7a154264987896f85",
+          customConfig: { x: "640", y: "480" }
+        }
+      },
+      customFloating: {
+        enabled: true,
+        closeButtonIcon: "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 12 12\"><path d=\"M7.426 6.001l4.278-4.279A1.008 1.008 0 1 0 10.278.296L6 4.574 1.723.296A1.008 1.008 0 1 0 .295 1.722l4.278 4.28-4.279 4.277a1.008 1.008 0 1 0 1.427 1.426L6 7.427l4.278 4.278a1.006 1.006 0 0 0 1.426 0 1.008 1.008 0 0 0 0-1.426L7.425 6.001z\"/></svg>"
+      }
+    };
+  </script>
+
+  <script src="https://script.wikia.nocookie.net/fandom-ae-assets/morpheus/video-engine/prod/morpheus-video-engine.js" type="module"></script>
+
+  <script>
+    window.fandomAgeGate = {
+      banner: "closed",
+      adultSelected: false,
+      applies: false,
+      resolved: false,
+      monetizationAllowed: false,
+      render: () => {},
+      close: () => {}
+    };
+    window.dispatchEvent(new CustomEvent("fandomAgeGateUpdate"));
+  </script>
+
+  <script src="https://accounts.google.com/gsi/intermediate" async></script>
+
+  <script>
+    // Country / language targeting
+    const supportedCountries = ["US", "CL", "AR", "BR"];
+    const supportedLanguages = ["en", "es", "pt", "de"];
+
+    const userLanguage = (navigator.language || "en-US").split("-")[0].toLowerCase();
+    const detectedCountry = "US"; // Replace with server-side or geo detection in production
+    const geoText =
+      supportedCountries.includes(detectedCountry)
+        ? "Region: " + detectedCountry + " | Language: " + supportedLanguages.includes(userLanguage ? userLanguage : "en")
+            ? userLanguage.toUpperCase()
+            : "EN"
+        : "Region: Global | Language: EN";
+
+    document.getElementById("geoInfo").textContent = "Targeting: " + geoText;
+
+    // Amazon APS
+    window.apstag = window.apstag || {
+      _vars: {},
+      fetchBids: function() {},
+      renderTag: function() {},
+      configure: function(config) { this._vars = config; }
+    };
+
+    // Google GPT setup
+    window.googletag = window.googletag || { cmd: [] };
+
+    googletag.cmd.push(function () {
+      googletag.defineSlot("/5441/fandom/leaderboard", [728, 90], "leaderboard-slot").addService(googletag.pubads());
+      googletag.pubads().enableSingleRequest();
+      googletag.enableServices();
+    });
+
+    // Example GPT display after setup
+    window.addEventListener("load", function () {
+      googletag.cmd.push(function () {
+        googletag.display("leaderboard-slot");
+      });
+    });
+
+    // DPlayer example
+    const videoOptions = {
+      container: document.getElementById("player"),
+      theme: "#f59e0b",
+      autoplay: false,
+      volume: 0.8,
+      video: {
+        url: "https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8",
+        type: "hls",
+        pic: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1200&q=80"
+      },
+      subtitle: {
+        url: "https://example.com/subtitles.vtt",
+        type: "webvtt",
+        fontSize: "20px",
+        bottom: "10%",
+        color: "#ffffff"
+      }
+    };
+
+    try {
+      new DPlayer(videoOptions);
+    } catch (error) {
+      console.warn("DPlayer failed to initialize:", error);
+    }
+  </script>
+</body>
+</html>
